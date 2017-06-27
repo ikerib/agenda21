@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    {{ form_start(form, { 'attr': {'class': 'form-horizontal', 'id': 'nireFrm'} }) }}
+
+    {#{% if not form.vars.valid %}#}
+        <div class="alert alert-error">
+            {{ form_errors(form) }}
+        </div>
+    {#{% endif %}#}
+
+    <div class="row">
+        <div class="form-group">
+            <label for="min-date" class="col-sm-4 control-label">{{ 'Egilearen izena | Nombre autor' | trans }}</label>
+            <div class="col-sm-7">
+                {{ form_errors(form.izena, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_widget(form.izena, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <label for="min-date" class="col-sm-4 control-label">{{ 'Email' | trans }}</label>
+            <div class="col-sm-7">
+                {{ form_errors(form.emaila, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_widget(form.emaila, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <label for="min-date" class="col-sm-4 control-label">{{ 'Kokalekua | Localización' | trans }}</label>
+            <div class="col-sm-7">
+                {{ form_errors(form.kokalekua, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_widget(form.kokalekua, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <label for="min-date" class="col-sm-4 control-label">{{ 'Irudia | Imagen' | trans }}</label>
+            <div class="col-sm-7">
+                {{ form_errors(form.uploadfile, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_widget(form.uploadfile, { 'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+    </div>
+
+
+    <div style="display: none;" id="lblinfo">
+        <p>Bidaltzen....<i class="fa fa-spinner fa-spin"></i></p>
+    </div>
+
+    <div class="row">
+        <div class="form-group pull-right">
+            <input id="btnBidali" type="submit" value="Bidali | Enviar" class="btn btn-primary">
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+
+
+    {{ parent() }}
+{% endblock %}
+{% block foot_script %}
+
+    {{ parent() }}
+
+
+
+{% endblock %}

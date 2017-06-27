@@ -66,3 +66,16 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    mappings:
+        uploadfile:
+            uri_prefix:         /uploads
+            upload_destination: '%kernel.root_dir%/../web/uploads'
+            namer:
+                  service: vich_uploader.namer_property
+                  options: { property: 'slug'} # supposing that the object contains a "slug" attribute or a "getSlug" method
+            inject_on_load:     true # should the file be injected into the uploadable entity when it is loaded from the data store.
+            delete_on_update:   true # should the file be deleted when a new file is uploaded
+            delete_on_remove:   true # should the file be deleted when the entity is removed
